@@ -37,6 +37,6 @@ Type a descriptive description including:
 
 The owner (which is me, Brunozhon), will "rank" the stuff.
 
-- If the owner is busy, he/her/it will not merge your changes
-- If you did not type the discrptive descpiption or typed very little description, he/her/it will probaly reject because he/she/it needs more info
+- If the owner is busy, he will not merge your changes
+- If you did not type the discrptive descpiption or typed very little description, he will probably reject it because he needs more info
 - If you typed a description which contains I added.. and the what you added, I fixed... and then what you fixed, I deleted... and then what you deleted, and/or why you added, fixed and/or deleted stuff, the owner will problaay merge the changes
