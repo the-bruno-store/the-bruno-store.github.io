@@ -15,26 +15,26 @@
     </audio>
     <h1>Lead</h1>
     <p>Cost: <span id="cost"></span></p>
-    <a href="https://the-bruno-store.github.io/cart.html">Check Out</a>
+    <a>Check Out</a>
     <script>
       var params = new URLSearchParams(location.search)
       var a = document.querySelector("a")
       var cost = document.getElementById("cost")
       if (params.get("pack") == "1") {
         cost.innerHTML = "$0.06"
-        a.href = "https://brunozhon.github.io/bruno-store/cart.html?cart=lead-1-pack"
+        a.href = "https://the-bruno-store.github.io/cart.html?cart=lead-1-pack"
       } else if (params.get("pack") == "5") {
-        cost.innerHTML = "$0.24"
-        a.href = "https://brunozhon.github.io/bruno-store/cart.html?cart=lead-5-pack"
+        cost.innerHTML = "$0.30"
+        a.href = "https://the-bruno-store.github.io/cart.html?cart=lead-5-pack"
       } else if (params.get("pack") == "10") {
         cost.innerHTML = "$0.59"
-        a.href = "https://brunozhon.github.io/bruno-store/cart.html?cart=lead-10-pack"
+        a.href = "https://the-bruno-store.github.io/cart.html?cart=lead-10-pack"
       } else if (params.get("pack") == "25") {
         cost.innerHTML = "$1.23"
-        a.href = "https://brunozhon.github.io/bruno-store/cart.html?cart=lead-25-pack"
+        a.href = "https://the-bruno-store.github.io/cart.html?cart=lead-25-pack"
       } else if (params.get("pack") == "100") {
         cost.innerHTML = "$4.90"
-        a.href = "https://brunozhon.github.io/bruno-store/cart.html?cart=lead-100-pack"
+        a.href = "https://the-bruno-store.github.io/cart.html?cart=lead-100-pack"
       } else {
         cost.innerHTML = "There was an error getting the data, so you should panic."
       }
