@@ -1,0 +1,4 @@
+# Beep boop. Boop! Boop beep? Beep!
+User-agent: *
+Disallow: 
+Sitemap: https://the-bruno-store.github.io/sitemap.txt
