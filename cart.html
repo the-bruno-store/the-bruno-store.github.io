@@ -81,7 +81,7 @@
       function deleteCart() {
         if (confirm("Do you want to delete all the items in your cart?")) {
           localStorage.itemsInCart = JSON.stringify({})
-          location.replace("https://brunozhon.github.io/bruno-store/cart.html")
+          location.replace("https://the-bruno-store.github.io/cart.html")
         }
       }
       function deleteItem(item) {
@@ -89,7 +89,7 @@
           var realCart = JSON.parse(localStorage.itemsInCart)
           delete realCart[item]
           localStorage.itemsInCart = JSON.stringify(realCart)
-          location.replace("https://brunozhon.github.io/bruno-store/cart.html")
+          location.replace("https://the-bruno-store.github.io/cart.html")
         }
       }
       function deleteOneOf(item) {
@@ -109,7 +109,7 @@
             realCart[item][2] = total
           }
           localStorage.itemsInCart = JSON.stringify(realCart)
-          location.replace("https://brunozhon.github.io/bruno-store/cart.html")
+          location.replace("https://the-bruno-store.github.io/cart.html")
         }
       }
     </script>
