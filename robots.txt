@@ -1,5 +1,5 @@
 # Disable all Googlebots
 User-agent: Googlebot
-Disallow: https://the-bruno-store.github.io/items/
-Disallow: https://the-bruno-store.github.io/cart.html
+Disallow: /items/
+Disallow: /cart.html
 Sitemap: https://the-bruno-store.github.io/sitemap.txt
