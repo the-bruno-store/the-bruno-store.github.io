@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My Cart</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link href="https://the-bruno-store.github.io/v1.0.0/favicon.ico" rel="icon" type="image/x-icon">
+  </head>
+  <body>
+    <audio autoplay controls loop>
+      <source src="https://the-bruno-store.github.io/v1.0.0/The%20Bruno%20Store.wav" type="video/wav"></source>
+    </audio>
+    <h1>My Cart</h1>
+    <p><button class="btn btn-danger" onclick="deleteCart()">Delete All Items In Cart</button></p>
+    <ul class="list-group" id="cart">
+    </ul>
+    <p><a href="https://the-bruno-store.github.io/v1.0.0/">Browse more!</a></p>
+    <script>
+      
+      // Add cart if it does not exist
+      if (!localStorage.itemsInCart) {
+        localStorage.itemsInCart = JSON.stringify({})
+      }
+      // Add items, if needed
+      var params = new URLSearchParams(location.search)
+      var cart = params.get("cart")
+      if (cart == "lead-1-pack") {
+        addItem("Lead (1-PACK)", 0, 6)
+      } else if (cart == "lead-5-pack") {
+        addItem("Lead (5-PACK)", 0, 30)
+      } else if (cart == "lead-10-pack") {
+        addItem("Lead (10-PACK)", 0, 59)
+      } else if (cart == "lead-25-pack") {
+        addItem("Lead (25-PACK)", 1, 23)
+      } else if (cart == "lead-100-pack") {
+        addItem("Lead (100-PACK)", 4, 90)
+      } else if (cart == "pencil-1-pack") {
+        addItem("Pencils (1-PACK)", 1, 0)
+      } else if (cart == "pencil-5-pack") {
+        addItem("Pencils (5-PACK)", 5, 0)
+      } else if (cart == "pencil-10-pack") {
+        addItem("Pencils (10-PACK)", 10, 0)
+      } else if (cart == "pencil-25-pack") {
+        addItem("Pencils (25-PACK)", 20, 0)
+      } else if (cart == "pencil-100-pack") {
+        addItem("Pencils (100-PACK)", 80, 0)
+      } else if (cart == "afnpr-small") {
+        addItem("Acetone-Free Nail Polish Remover (SMALL)", 1, 00)
+      } else if (cart == "afnpr-medium") { 
+        addItem("Acetone-Free Nail Polish Remover (MEDIUM)", 7, 50)
+      } else if (cart == "afnpr-large") {
+        addItem("Acetone-Free Nail Polish Remover (LARGE)", 15, 00)
+      } else if (cart == "edible-glue-small") {
+        addItem("Edible Glue (SMALL)", 0, 50)
+      } else if (cart == "edible-glue-medium") {
+        addItem("Edible Glue (MEDIUM)", 3, 75)
+      } else if (cart == "edible-glue-large") {
+        addItem("Edible Glue (LARGE)", 7, 50)
+      }
+      var html = ""
+      var cartItems = JSON.parse(localStorage.itemsInCart)
+      // Render items
+      for (const item in cartItems) {
+        html += `<li class="list-group-item">${item}; Count: ${cartItems[item][0]}; Cost: $${cartItems[item][1]}.`
+        // Format cents. This is why I seperated the dollars and cents to two values.
+        var cost = cartItems[item][2]
+        if (cost < 10 && cost > -1) {
+          cost = cost.toString()
+          cost = "0" + cost
+        }
+        html += `${cost}</li><li><button onclick="deleteItem('${item}')">Delete All Of This</button></li>
+        <li><button onclick="deleteOneOf('${item}')">Delete One Of This</button></li>`
+      }
+      document.getElementById("cart").innerHTML = html
+      function addItem(item, dollars, cents) {
+        var realCart = JSON.parse(localStorage.itemsInCart)
+        if (realCart[item]) {
+          realCart[item][0] += 1
+          // Process cents and dollars
+          realCart[item][1] = dollars * realCart[item][0]
+          realCart[item][2] = cents * realCart[item][0]
+          // 100 cents should be one dollar
+          while (realCart[item][2] > 99) {
+            realCart[item][2] -= 100
+            realCart[item][1] += 1
+          }
+        } else {
+          realCart[item] = [1, dollars, cents]
+        }
+        localStorage.itemsInCart = JSON.stringify(realCart)
+      }
+      function deleteCart() {
+        if (confirm("Do you want to delete all the items in your cart?")) {
+          localStorage.itemsInCart = JSON.stringify({})
+          location.replace("https://the-bruno-store.github.io/v1.0.0/cart.html")
+        }
+      }
+      function deleteItem(item) {
+        if (confirm(`Do you want to delete ALL OF the item ${item}?`)) {
+          var realCart = JSON.parse(localStorage.itemsInCart)
+          delete realCart[item]
+          localStorage.itemsInCart = JSON.stringify(realCart)
+          location.replace("https://the-bruno-store.github.io/v1.0.0/cart.html")
+        }
+      }
+      function deleteOneOf(item) {
+        if (confirm(`Do you want to delete one of the item ${item}?`)) {
+          var realCart = JSON.parse(localStorage.itemsInCart)
+          if (realCart[item][0] == 1) {
+            realCart[item] = function loophole() {}
+          } else {
+            let moneyCalc = (realCart[item][1] * 100 + realCart[item][2]) / realCart[item][0]
+            realCart[item][0] -= 1
+            let total = moneyCalc * realCart[item][0]
+            realCart[item][1] = 0
+            while (total > 99) {
+              total -= 100
+              realCart[item][1] += 1
+            }
+            realCart[item][2] = total
+          }
+          localStorage.itemsInCart = JSON.stringify(realCart)
+          location.replace("https://the-bruno-store.github.io/v1.0.0/cart.html")
+        }
+      }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+  </body>
+</html>
