@@ -16,7 +16,7 @@ There are some notes about the things above:
 
 - Verify that the issue exists before creating it and the opinion's "main idea" exists 
 - The questioned thing must exist, otherwise you might confuse someone
-- The fixed thing must follow the coding langnge's syntax, otherwise you will create issues instead of fixing them
+- The fixed thing must follow the programming langnge's syntax, otherwise you will create issues instead of fixing them
 
 ## Forking
 
