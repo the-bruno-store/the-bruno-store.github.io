@@ -41,7 +41,7 @@
     <a href="https://the-bruno-store.github.io/cart.html">Check Out</a>
     <script>
       var params = new URLSearchParams(location.search)
-      var a = document.querySelector("a")
+      var a = document.querySelectorAll("a")[2]
       var cost = document.getElementById("cost")
       if (params.get("ants") == "1") {
         cost.innerHTML = "$4.99"
