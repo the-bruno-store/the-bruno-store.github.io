@@ -43,7 +43,7 @@
       var params = new URLSearchParams(location.search)
       var a = document.querySelectorAll("a")[2]
       var cost = document.getElementById("cost")
-      if (params.get("pack") == "1") {
+      if (params.get("size") == "1") {
         cost.innerHTML = "$10.00"
         a.href = "https://the-bruno-store.github.io/cart.html?cart=foiler-1"
       } else if (params.get("size") == "3") {
