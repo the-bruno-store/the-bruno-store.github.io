@@ -57,24 +57,34 @@
       var cart = params.get("cart")
       if (cart == "lead-1-pack") {
         addItem("Lead (1-PACK)", 0, 6)
+        addItem("FREE Lead (1-PACK)", 0, 0)
       } else if (cart == "lead-5-pack") {
         addItem("Lead (5-PACK)", 0, 30)
+        addItem("FREE Lead (5-PACK)", 0, 0)
       } else if (cart == "lead-10-pack") {
         addItem("Lead (10-PACK)", 0, 59)
+        addItem("FREE Lead (10-PACK)", 0, 0)
       } else if (cart == "lead-25-pack") {
         addItem("Lead (25-PACK)", 1, 23)
+        addItem("FREE Lead (25-PACK)", 0, 0)
       } else if (cart == "lead-100-pack") {
         addItem("Lead (100-PACK)", 4, 90)
+        addItem("FREE Lead (100-PACK)", 0, 0)
       } else if (cart == "pencil-1-pack") {
         addItem("Pencils (1-PACK)", 1, 0)
+        addItem("FREE Pencils (1-PACK)", 0, 0)
       } else if (cart == "pencil-5-pack") {
         addItem("Pencils (5-PACK)", 5, 0)
+        addItem("FREE Pencils (5-PACK)", 0, 0)
       } else if (cart == "pencil-10-pack") {
         addItem("Pencils (10-PACK)", 10, 0)
+        addItem("FREE Pencils (10-PACK)", 0, 0)
       } else if (cart == "pencil-25-pack") {
         addItem("Pencils (25-PACK)", 20, 0)
+        addItem("FREE Pencils (25-PACK)", 0, 0)
       } else if (cart == "pencil-100-pack") {
         addItem("Pencils (100-PACK)", 80, 0)
+        addItem("FREE Pencils (100-PACK)", 0, 0)
       } else if (cart == "afnpr-small") {
         addItem("Acetone-Free Nail Polish Remover (SMALL)", 1, 00)
       } else if (cart == "afnpr-medium") { 
@@ -97,6 +107,12 @@
         addItem("Ant Farm (w. 25 Ants)", 5, 49) 
       } else if (cart == "ant-farm-100-ants") {
         addItem("Ant Farm (w. 100 Ants)", 6, 99) 
+      } else if (cart == "up-water-1") {
+        addItem("Ultra-Purified Water (1-PACK)", 1, 00)
+      } else if (cart == "up-water-6") {
+        addItem("Ultra-Purified Water (6-PACK)", 6, 00)
+      } else if (cart == "up-water-12") {
+        addItem("Ultra-Purified Water (12-PACK)", 11, 50)
       }
       var html = ""
       var cartItems = JSON.parse(localStorage.itemsInCart)
