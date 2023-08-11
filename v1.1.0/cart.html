@@ -32,14 +32,14 @@
       </ul>
     </nav>
     <audio autoplay controls loop>
-      <source src="https://the-bruno-store.github.io/The%20Bruno%20Store.wav" type="video/wav"></source>
-      <source src="https://the-bruno-store.github.io/The%20Bruno%20Store.aiff"></source>
+      <source src="https://the-bruno-store.github.io/v1.1.0/The%20Bruno%20Store.wav" type="video/wav"></source>
+      <source src="https://the-bruno-store.github.io/v1.1.0/The%20Bruno%20Store.aiff"></source>
     </audio>
     <h1>My Cart</h1>
     <p><button class="btn btn-danger" onclick="deleteCart()">Delete All Items In Cart</button></p>
     <ul class="list-group" id="cart">
     </ul>
-    <p><a href="https://the-bruno-store.github.io/">Browse more!</a></p>
+    <p><a href="https://the-bruno-store.github.io/v1.1.0/">Browse more!</a></p>
     <div class="card">
       <div class="card-body">
         <!-- Icons from Bootstrap Icons -->
@@ -153,7 +153,7 @@
       function deleteCart() {
         if (confirm("Do you want to delete all the items in your cart?")) {
           localStorage.itemsInCart = JSON.stringify({})
-          location.replace("https://the-bruno-store.github.io/cart.html")
+          location.replace("https://the-bruno-store.github.io/v1.1.0/cart.html")
         }
       }
       function deleteItem(item) {
@@ -161,7 +161,7 @@
           var realCart = JSON.parse(localStorage.itemsInCart)
           delete realCart[item]
           localStorage.itemsInCart = JSON.stringify(realCart)
-          location.replace("https://the-bruno-store.github.io/cart.html")
+          location.replace("https://the-bruno-store.github.io/v1.1.0/cart.html")
         }
       }
       function deleteOneOf(item) {
@@ -181,7 +181,7 @@
             realCart[item][2] = total
           }
           localStorage.itemsInCart = JSON.stringify(realCart)
-          location.replace("https://the-bruno-store.github.io/cart.html")
+          location.replace("https://the-bruno-store.github.io/v1.1.0/cart.html")
         }
       }
     </script>
