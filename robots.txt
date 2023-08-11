@@ -2,4 +2,6 @@
 User-agent: Googlebot
 Disallow: /items/
 Disallow: /cart.html
+User-agent: GPTBot
+Disallow: /
 Sitemap: https://the-bruno-store.github.io/sitemap.txt
