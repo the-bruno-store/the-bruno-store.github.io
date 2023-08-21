@@ -51,36 +51,10 @@
     <script>
       document.querySelector("audio").play()
       // Generate book list
-      const bookData = {
-        "Lead (1-PACK)": ["Why buy only one lead, the main currency of the classroom?", 0, 6 /* Two values for cents and dollars for proper formatting. */, "https://the-bruno-store.github.io/items/lead.html?pack=1"],
-        "Lead (5-PACK)": ["Just as bad as buying one lead.", 0, 30, "https://the-bruno-store.github.io/items/lead.html?pack=5"],
-        "Lead (10-PACK)": ["Just as bad as buying one lead.", 0, 59, "https://the-bruno-store.github.io/items/lead.html?pack=10"],
-        "Lead (25-PACK)": ["The main currency of the classroom.", 1, 23, "https://the-bruno-store.github.io/items/lead.html?pack=25"],
-        "Lead (100-PACK)": ["The main currency of the classroom.", 4, 90, "https://the-bruno-store.github.io/items/lead.html?pack=100"],
-        "Pencils (1-PACK)": ["WARNING: Not the mechanical pencil.", 1, 0 /* Two values for cents and dollars for proper formatting. */, "https://the-bruno-store.github.io/items/pencils.html?pack=1"],
-        "Pencils (5-PACK)": ["A regular HB pencil, multiplied by 5.", 5, 0, "https://the-bruno-store.github.io/items/pencils.html?pack=5"],
-        "Pencils (10-PACK)": ["A regular HB pencil, multiplied by 10.", 10, 0, "https://the-bruno-store.github.io/items/pencils.html?pack=10"],
-        "Pencils (25-PACK)": ["Pencils galore!", 20, 0, "https://the-bruno-store.github.io/items/pencils.html?pack=25"],
-        "Pencils (100-PACK)": ["Pencils galore!", 80, 0, "https://the-bruno-store.github.io/items/pencils.html?pack=100"],
-        "Acetone-Free Nail Polish Remover (SMALL)": ["Without acetone, it is 100% less toxic!", 1, 00, "https://the-bruno-store.github.io/items/acetone-free-nail-polish-remover.html?size=1"],
-        "Acetone-Free Nail Polish Remover (MEDIUM)": ["Some giants use this.", 7, 50, "https://the-bruno-store.github.io/items/acetone-free-nail-polish-remover.html?size=2"],
-        "Acetone-Free Nail Polish Remover (LARGE)": ["Some art teachers use this.", 15, 00, "https://the-bruno-store.github.io/items/acetone-free-nail-polish-remover.html?size=3"],
-        "Edible Glue (SMALL)": ["100% edible and transparent! No flavor!", 0, 50, "https://the-bruno-store.github.io/items/edible-glue.html?size=1"],
-        "Edible Glue (MEDIUM)": ["100% edible and transparent! No flavor!", 3, 75, "https://the-bruno-store.github.io/items/edible-glue.html?size=2"],
-        "Edible Glue (LARGE)": ["100% edible and transparent! No flavor!", 7, 50, "https://the-bruno-store.github.io/items/edible-glue.html?size=3"],
-        "Ant Farm (w. 1 Ant)": ["Why one ant? It can't do anything except eat!", 4, 99, "https://the-bruno-store.github.io/items/ant-farm.html?ants=1"],
-        "Ant Farm (w. 5 Ants)": ["Five ants are better because you can have a queen ant!", 5, 09, "https://the-bruno-store.github.io/items/ant-farm.html?ants=5"],
-        "Ant Farm (w. 10 Ants)": ["Ten ants, because I am ten as of 2023!", 5, 19, "https://the-bruno-store.github.io/items/ant-farm.html?ants=10"],
-        "Ant Farm (w. 25 Ants)": ["You can have two queens with this! Probably not that good for the ants...", 5, 49, "https://the-bruno-store.github.io/items/ant-farm.html?ants=25"],
-        "Ant Farm (w. 100 Ants)": ["Ten queens for the ultimate battle royale!", 6, 99, "https://the-bruno-store.github.io/items/ant-farm.html?ants=100"],
-        "Ultra-Purified Water (1-PACK)": ["99.9999999999% free of bacteria! (Until the time you open the cap.)", 1, 0, "https://the-bruno-store.github.io/items/ultra-purified-water.html?size=1"],
-        "Ultra-Purified Water (6-PACK)": ["Comes with a sleek 6-pack ring holder! (Remember <b>NOT</b> to put it in the ocean.)", 6, 0, "https://the-bruno-store.github.io/items/ultra-purified-water.html?size=6"],
-        "Ultra-Purified Water (12-PACK)": ["Comes with a sleek 12-pack waterdegradable ring holder! Can waterdegrade in 10 seconds!", 11, 50, "https://the-bruno-store.github.io/items/ultra-purified-water.html?size=12"],
-        "One 2-in-1 Water <b>F</b><u>oiler</u> (<b>F</b>ilter & B<u>oiler</u>)": ["After you filter the water, boil it and \"When I get all steamed up, hear me shout: 'Tip me over and pour me out!'\" (from My Little Teapot)", 10, 0, "https://the-bruno-store.github.io/items/2-in-1-water-foiler.html?size=1"],
-        "Three 2-in-1 Water <b>F</b><u>oiler</u> (<b>F</b>ilter & B<u>oiler</u>)": ["You'll have three foilers saying: \"Tip me over and pour me out!\", but at least it comes with a sleek 3-pack ring holder. As always, <b>NOT</b> waterdegradable.", 30, 00, "https://the-bruno-store.github.io/items/2-in-1-water-foiler.html?size=12"]
-      }
+      const itemsFetch = await fetch("items.json")
+      const items = itemsFetch.json()
       let html = ""
-      for (const book in bookData) {
+      for (const book in items) {
         html += `<h2>${book}</h2>
         <p>${bookData[book][0]}</p>
         <p>Cost: $${bookData[book][1]}.`
