@@ -52,7 +52,7 @@
       document.querySelector("audio").play()
       // Generate book list
       const itemsFetch = await fetch("items.json")
-      const items = itemsFetch.json()
+      const items = await itemsFetch.json()
       let html = ""
       for (const book in items) {
         html += `<h2>${book}</h2>
