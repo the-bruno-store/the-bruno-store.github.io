@@ -56,15 +56,15 @@
       let html = ""
       for (const book in items) {
         html += `<h2>${book}</h2>
-        <p>${bookData[book][0]}</p>
-        <p>Cost: $${bookData[book][1]}.`
+        <p>${items[book][0]}</p>
+        <p>Cost: $${items[book][1]}.`
         // Format cents. This is why I seperated the dollars and cents to two values.
-        var cost = bookData[book][2]
+        var cost = items[book][2]
         if (cost < 10 && cost > -1) {
           cost = cost.toString()
           cost = "0" + cost
         }
-        html += `${cost}</p><p><a href="${bookData[book][3]}">Buy now!</a></p>`
+        html += `${cost}</p><p><a href="${items[book][3]}">Buy now!</a></p>`
       }
       document.getElementById("bookcontainer").innerHTML = html
     </script>
